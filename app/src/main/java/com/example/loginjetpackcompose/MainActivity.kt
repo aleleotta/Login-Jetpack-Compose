@@ -10,8 +10,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -46,51 +48,46 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@kotlin.OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Login(name: String, modifier: Modifier = Modifier) {
+    var usernameTextField by rememberSaveable { mutableStateOf("") }
+    var passwordTextField by rememberSaveable { mutableStateOf("") }
     Row {
         Column {
             Image(
                 painter = painterResource(id = R.drawable.captura_de_pantalla_2023_10_02_131011),
                 contentDescription = "IES Nervión",
                 alignment = Alignment.Center,
-                modifier = modifier
+                modifier = modifier.fillMaxSize()
             )
             Spacer(modifier = Modifier.height(25.dp))
             Text(
                 text = "Username:",
-                modifier = modifier
+                modifier = modifier.fillMaxSize()
             )
             Spacer(modifier = Modifier.height(15.dp))
             Text(
                 text = "Password:",
-                modifier = modifier
+                modifier = modifier.fillMaxSize()
             )
         }
         Column {
             Spacer(modifier = Modifier.height(53.dp))
-            TextField(value = "", label = "Password")
+            TextField(
+                value = usernameTextField,
+                onValueChange = {newUsernameTextField -> usernameTextField = newUsernameTextField},
+                modifier = modifier.fillMaxSize()
+            )
             Spacer(modifier = Modifier.height(15.dp))
             TextField(
-                text = "Password:",
-                modifier = modifier
+                value = passwordTextField,
+                onValueChange = {newPasswordTextField -> passwordTextField = newPasswordTextField},
+                modifier = modifier.fillMaxSize()
             )
         }
     }
 }
-
-@kotlin.OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun SimpleTextField() {
-    var text by remember { mutableStateOf(TextFieldValue("")) }
-    TextField(
-        value = text,
-        onValueChange = {
-            text =
-        }
-    )
-}
-
 
 @Preview(showBackground = true)
 @Composable
