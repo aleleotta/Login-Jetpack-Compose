@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
@@ -59,17 +60,17 @@ fun Login(name: String, modifier: Modifier = Modifier) {
                 painter = painterResource(id = R.drawable.captura_de_pantalla_2023_10_02_131011),
                 contentDescription = "IES Nervión",
                 alignment = Alignment.Center,
-                modifier = modifier.fillMaxSize()
+                modifier = modifier.padding(50.dp)
             )
             Spacer(modifier = Modifier.height(25.dp))
             Text(
                 text = "Username:",
-                modifier = modifier.fillMaxSize()
+                modifier = modifier
             )
             Spacer(modifier = Modifier.height(15.dp))
             Text(
                 text = "Password:",
-                modifier = modifier.fillMaxSize()
+                modifier = modifier
             )
         }
         Column {
@@ -77,13 +78,13 @@ fun Login(name: String, modifier: Modifier = Modifier) {
             TextField(
                 value = usernameTextField,
                 onValueChange = {newUsernameTextField -> usernameTextField = newUsernameTextField},
-                modifier = modifier.fillMaxSize()
+                modifier = modifier
             )
             Spacer(modifier = Modifier.height(15.dp))
             TextField(
                 value = passwordTextField,
                 onValueChange = {newPasswordTextField -> passwordTextField = newPasswordTextField},
-                modifier = modifier.fillMaxSize()
+                modifier = modifier
             )
         }
     }
