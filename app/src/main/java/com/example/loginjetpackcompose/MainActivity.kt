@@ -1,6 +1,7 @@
 package com.example.loginjetpackcompose
 
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -57,7 +58,9 @@ fun Login(name: String, modifier: Modifier = Modifier) {
             painter = painterResource(id = R.drawable.captura_de_pantalla_2023_10_02_131011_removebg_preview),
             contentDescription = "IES Nervión",
             alignment = Alignment.Center,
-            modifier = modifier.padding(5.dp).size(300.dp, 100.dp)
+            modifier = modifier
+                .padding(5.dp)
+                .size(300.dp, 100.dp)
         )
         Spacer(modifier = Modifier.height(25.dp))
         Text(
@@ -70,7 +73,9 @@ fun Login(name: String, modifier: Modifier = Modifier) {
             value = usernameTextField,
             onValueChange = {newUsernameTextField -> usernameTextField = newUsernameTextField},
             label = {Text(usernameTextField)},
-            modifier = modifier.width(200.dp).height(25.dp)
+            modifier = modifier
+                .width(200.dp)
+                .height(25.dp)
         )
         Spacer(modifier = Modifier.height(15.dp))
         Text(
@@ -83,8 +88,11 @@ fun Login(name: String, modifier: Modifier = Modifier) {
             value = passwordTextField,
             onValueChange = {newPasswordTextField -> passwordTextField = newPasswordTextField},
             label = {Text(passwordTextField)},
-            modifier = modifier.width(200.dp).height(25.dp)
+            modifier = modifier
+                .width(200.dp)
+                .height(25.dp)
         )
+        Spacer(modifier = Modifier.height(30.dp))
     }
 }
 
