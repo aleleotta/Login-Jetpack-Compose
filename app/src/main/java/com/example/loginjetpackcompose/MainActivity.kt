@@ -41,7 +41,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Login("Android")
+                    val modifier = Modifier
+                    Login(modifier)
                 }
             }
         }
@@ -50,7 +51,7 @@ class MainActivity : ComponentActivity() {
 
 @kotlin.OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Login(name: String, modifier: Modifier = Modifier) {
+fun Login(modifier: Modifier = Modifier) {
     var usernameTextField by rememberSaveable { mutableStateOf("") }
     var passwordTextField by rememberSaveable { mutableStateOf("") }
     Column (modifier.fillMaxSize(), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally){
@@ -100,6 +101,6 @@ fun Login(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun LoginPreview() {
     LoginJetpackComposeTheme {
-        Login("Android")
+        Login(modifier = Modifier)
     }
 }
