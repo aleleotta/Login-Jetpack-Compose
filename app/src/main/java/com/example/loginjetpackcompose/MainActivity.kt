@@ -41,6 +41,9 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.loginjetpackcompose.ui.theme.LoginJetpackComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -48,13 +51,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             LoginJetpackComposeTheme {
-                //A surface container using the 'background' color from the theme.
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val modifier = Modifier
-                    Login(modifier)
+                    val navController = rememberNavController()
+                    NavControllerHandler().Navigation(navController)
+                    Login(navController)
                 }
             }
         }
@@ -63,7 +66,8 @@ class MainActivity : ComponentActivity() {
 
 @kotlin.OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Login(modifier: Modifier = Modifier) {
+fun Login(navController: NavHostController) {
+    val modifier = Modifier
     var usernameTextField by rememberSaveable { mutableStateOf("") }
     var passwordTextField by rememberSaveable { mutableStateOf("") }
     Column (modifier.fillMaxSize(), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally){
@@ -140,6 +144,7 @@ fun Login(modifier: Modifier = Modifier) {
 @Composable
 fun LoginPreview() {
     LoginJetpackComposeTheme {
-        Login(modifier = Modifier)
+        val navController = rememberNavController()
+        Login(navController)
     }
 }
