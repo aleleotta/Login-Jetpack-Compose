@@ -119,7 +119,13 @@ fun Login(navController: NavHostController) {
         }
         Spacer(modifier = Modifier.height(30.dp))
         Button(
-            onClick = { navController.navigate("AccessGranted") },
+            onClick = {
+                if(usernameTextField == "aleleotta" && passwordTextField == "login2024") {
+                    navController.navigate("AccessGranted")
+                } else {
+                    navController.navigate("AccessDenied")
+                }
+                      },
             shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.Blue,
