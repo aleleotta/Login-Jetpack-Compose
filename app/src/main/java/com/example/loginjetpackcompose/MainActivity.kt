@@ -140,23 +140,29 @@ fun Login(navController: NavHostController) {
 @Composable
 fun AccessGranted(navController: NavHostController) {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
     ) {
-        Button(
-            onClick = {
-                navController.navigate("Login")
-            },
-            shape = RoundedCornerShape(10.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color.Red,
-                contentColor = Color.White
-            )
+        Row(
+            modifier = Modifier,
         ) {
-            Text(text = "Go back", fontSize = 20.sp)
+            Button(
+                onClick = {
+                    navController.navigate("Login")
+                },
+                shape = RoundedCornerShape(10.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Red,
+                    contentColor = Color.White
+                )
+            ) {
+                Text(text = "Go back", fontSize = 20.sp)
+            }
+            Spacer(modifier = Modifier.width(500.dp))
         }
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(300.dp))
         Text(
             text = "Access granted!",
             color = Color.Black,
@@ -169,23 +175,29 @@ fun AccessGranted(navController: NavHostController) {
 @Composable
 fun AccessDenied(navController: NavHostController) {
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
     ) {
-        Button(
-            onClick = {
-                navController.navigate("Login")
-            },
-            shape = RoundedCornerShape(10.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Color.Red,
-                contentColor = Color.White
-            )
+        Row(
+            modifier = Modifier,
         ) {
-            Text(text = "Go back", fontSize = 20.sp)
+            Button(
+                onClick = {
+                    navController.navigate("Login")
+                },
+                shape = RoundedCornerShape(10.dp),
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Color.Red,
+                    contentColor = Color.White
+                )
+            ) {
+                Text(text = "Go back", fontSize = 20.sp)
+            }
+            Spacer(modifier = Modifier.width(500.dp))
         }
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(300.dp))
         Text(
             text = "Access denied!",
             color = Color.Black,
