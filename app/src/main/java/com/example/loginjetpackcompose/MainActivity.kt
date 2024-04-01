@@ -120,7 +120,7 @@ fun Login(navController: NavHostController) {
         Spacer(modifier = Modifier.height(30.dp))
         Button(
             onClick = {
-                if(usernameTextField == "aleleotta" && passwordTextField == "login2024") {
+                if(usernameTextField == "user" && passwordTextField == "login2024") {
                     navController.navigate("AccessGranted")
                 } else {
                     navController.navigate("AccessDenied")
