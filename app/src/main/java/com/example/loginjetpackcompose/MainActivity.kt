@@ -48,7 +48,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     val navController = rememberNavController()
                     NavControllerHandler().Navigation(navController)
-                    Login(navController)
+                    navController.navigate("Login")
                 }
             }
         }
@@ -119,7 +119,7 @@ fun Login(navController: NavHostController) {
         }
         Spacer(modifier = Modifier.height(30.dp))
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { navController.navigate("AccessGranted") },
             shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = Color.Blue,
@@ -131,11 +131,61 @@ fun Login(navController: NavHostController) {
     }
 }
 
+@Composable
+fun AccessGranted(navController: NavHostController) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = "Access granted!",
+            color = Color.Black,
+            modifier = Modifier,
+            fontSize = 40.sp
+        )
+    }
+}
+
+@Composable
+fun AccessDenied(navController: NavHostController) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = "Access denied!",
+            color = Color.Black,
+            modifier = Modifier,
+            fontSize = 40.sp
+        )
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun LoginPreview() {
     LoginJetpackComposeTheme {
         val navController = rememberNavController()
         Login(navController)
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun AccessGrantedPreview() {
+    LoginJetpackComposeTheme {
+        val navController = rememberNavController()
+        AccessGranted(navController)
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun AccessDeniedPreview() {
+    LoginJetpackComposeTheme {
+        val navController = rememberNavController()
+        AccessDenied(navController)
     }
 }

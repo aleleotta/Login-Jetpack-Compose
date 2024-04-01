@@ -10,6 +10,8 @@ class NavControllerHandler {
     fun Navigation(navController: NavHostController) {
         NavHost(navController = navController, startDestination = "Login") {
             composable(route = "Login") { Login(navController) }
+            composable(route = "AccessGranted") { AccessGranted(navController) }
+            composable(route = "AccessDenied") { AccessDenied(navController) }
         }
     }
 }
