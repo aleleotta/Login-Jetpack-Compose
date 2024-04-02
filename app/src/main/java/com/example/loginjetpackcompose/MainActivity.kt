@@ -208,15 +208,15 @@ fun ContactView(contact: Contact) {
         Row {
             Column {
                 Image(
-                    painter = {
-                        if (contact.gender == "Male") {
-                            painterResource(id = R.drawable.male)
-                        } else {
-                            painterResource(id = R.drawable.female)
-                        }
-                    }
+                    painter = painterResource(id = if(contact.gender == "Male") {
+                        R.drawable.male
+                    } else if(contact.gender == "Female") {
+                        R.drawable.female
+                    } else {
+                        R.drawable.ic_launcher_foreground
+                    } ),
                     contentDescription = "Contact photo",
-                    Modifier.height(100.dp)
+                    Modifier.height(100.dp).padding(8.dp)
                 )
             }
             Column {
