@@ -105,7 +105,7 @@ fun Login(navController: NavHostController) {
                 TextField(
                     value = usernameTextField,
                     onValueChange = {newUsernameTextField -> usernameTextField = newUsernameTextField},
-                    label = {Text(usernameTextField)},
+                    label = {Text(text = usernameTextField, fontSize = 14.sp)},
                     modifier = modifier
                         .width(200.dp)
                         .height(25.dp)
@@ -114,7 +114,7 @@ fun Login(navController: NavHostController) {
                 TextField(
                     value = passwordTextField,
                     onValueChange = {newPasswordTextField -> passwordTextField = newPasswordTextField},
-                    label = {Text(passwordTextField)},
+                    label = {Text(text = passwordTextField, fontSize = 14.sp)},
                     modifier = modifier
                         .width(200.dp)
                         .height(25.dp)
@@ -186,12 +186,13 @@ fun AccessGranted(navController: NavHostController) {
                 Contact("user8", "0363402302", "Male"),
                 Contact("user9", "0363402302", "Female"),
                 Contact("user10", "0363402302", "Female"),
-                Contact("user10", "0363402302", "Non-Binary")
+                Contact("user11", "0363402302", "Non-Binary")
             )
         )
     }
 }
 
+//OUTSIDE CARD: Template
 @Composable
 fun ItemList(contactItem: List<Contact>) {
     LazyColumn {
@@ -202,6 +203,7 @@ fun ItemList(contactItem: List<Contact>) {
     }
 }
 
+//INSIDE CARD: Template
 @Composable
 fun ContactView(contact: Contact) {
     Card(Modifier.fillMaxWidth()) {
@@ -214,7 +216,7 @@ fun ContactView(contact: Contact) {
                         R.drawable.female
                     } else {
                         R.drawable.ic_launcher_foreground
-                    } ),
+                    }),
                     contentDescription = "Contact photo",
                     Modifier.height(100.dp).padding(8.dp)
                 )
