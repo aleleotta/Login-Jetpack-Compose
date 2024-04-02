@@ -173,18 +173,20 @@ fun AccessGranted(navController: NavHostController) {
             modifier = Modifier,
             fontSize = 40.sp
         )
+        Spacer(modifier = Modifier.height(20.dp))
         ItemList(
             listOf(
-                Contact("user1", "0363402302"),
-                Contact("user2", "0363402302"),
-                Contact("user3", "0363402302"),
-                Contact("user4", "3480792302"),
-                Contact("user5", "0363402302"),
-                Contact("user6", "0363402302"),
-                Contact("user7", "0363402302"),
-                Contact("user8", "0363402302"),
-                Contact("user9", "0363402302"),
-                Contact("user10", "0363402302")
+                Contact("user1", "0363402302", "Male"),
+                Contact("user2", "0363402302", "Female"),
+                Contact("user3", "0363402302", "Male"),
+                Contact("user4", "3480792302", "Female"),
+                Contact("user5", "0363402302", "Male"),
+                Contact("user6", "0363402302", "Female"),
+                Contact("user7", "0363402302", "Male"),
+                Contact("user8", "0363402302", "Male"),
+                Contact("user9", "0363402302", "Female"),
+                Contact("user10", "0363402302", "Female"),
+                Contact("user10", "0363402302", "Non-Binary")
             )
         )
     }
@@ -195,6 +197,7 @@ fun ItemList(contactItem: List<Contact>) {
     LazyColumn {
         items(contactItem) {
             contactItem -> ContactView(contact = contactItem)
+            Spacer(modifier = Modifier.height(10.dp))
         }
     }
 }
@@ -205,7 +208,13 @@ fun ContactView(contact: Contact) {
         Row {
             Column {
                 Image(
-                    painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                    painter = {
+                        if (contact.gender == "Male") {
+                            painterResource(id = R.drawable.male)
+                        } else {
+                            painterResource(id = R.drawable.female)
+                        }
+                    }
                     contentDescription = "Contact photo",
                     Modifier.height(100.dp)
                 )
