@@ -1,5 +1,6 @@
 package com.example.loginjetpackcompose
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -105,7 +106,7 @@ fun Login(navController: NavHostController) {
                 TextField(
                     value = usernameTextField,
                     onValueChange = {newUsernameTextField -> usernameTextField = newUsernameTextField},
-                    label = {Text(text = usernameTextField, fontSize = 14.sp)},
+                    label = {Text(usernameTextField)},
                     modifier = modifier
                         .width(200.dp)
                         .height(25.dp)
@@ -114,7 +115,7 @@ fun Login(navController: NavHostController) {
                 TextField(
                     value = passwordTextField,
                     onValueChange = {newPasswordTextField -> passwordTextField = newPasswordTextField},
-                    label = {Text(text = passwordTextField, fontSize = 14.sp)},
+                    label = {Text(passwordTextField)},
                     modifier = modifier
                         .width(200.dp)
                         .height(25.dp)
