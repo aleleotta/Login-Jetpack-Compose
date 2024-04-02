@@ -49,7 +49,7 @@ class MainActivity : ComponentActivity() {
             LoginJetpackComposeTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = Color.White
                 ) {
                     val navController = rememberNavController()
                     NavControllerHandler().Navigation(navController)
