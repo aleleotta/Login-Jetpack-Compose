@@ -9,13 +9,17 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -162,15 +166,66 @@ fun AccessGranted(navController: NavHostController) {
             }
             Spacer(modifier = Modifier.width(500.dp))
         }
-        Spacer(modifier = Modifier.height(300.dp))
+        Spacer(modifier = Modifier.height(20.dp))
         Text(
             text = "Access granted!",
             color = Color.Black,
             modifier = Modifier,
             fontSize = 40.sp
         )
+        ItemList(
+            listOf(
+                Contact("user1", "0363402302"),
+                Contact("user2", "0363402302"),
+                Contact("user3", "0363402302"),
+                Contact("user4", "3480792302"),
+                Contact("user5", "0363402302"),
+                Contact("user6", "0363402302"),
+                Contact("user7", "0363402302"),
+                Contact("user8", "0363402302"),
+                Contact("user9", "0363402302"),
+                Contact("user10", "0363402302")
+            )
+        )
     }
 }
+
+@Composable
+fun ItemList(contactItem: List<Contact>) {
+    LazyColumn {
+        items(contactItem) {
+            contactItem -> ContactView(contact = contactItem)
+        }
+    }
+}
+
+@Composable
+fun ContactView(contact: Contact) {
+    Card(Modifier.fillMaxWidth()) {
+        Row {
+            Column {
+                Image(
+                    painter = painterResource(id = R.drawable.ic_launcher_foreground),
+                    contentDescription = "Contact photo",
+                    Modifier.height(100.dp)
+                )
+            }
+            Column {
+                Text(
+                    text = contact.name,
+                    fontSize = 24.sp,
+                    modifier = Modifier.padding(8.dp)
+                )
+                Text(
+                    text = contact.phoneNumber,
+                    fontSize = 24.sp,
+                    modifier = Modifier.padding(8.dp)
+                )
+            }
+        }
+    }
+}
+
 
 @Composable
 fun AccessDenied(navController: NavHostController) {
