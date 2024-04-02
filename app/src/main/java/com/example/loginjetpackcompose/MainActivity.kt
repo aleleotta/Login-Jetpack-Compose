@@ -164,7 +164,7 @@ fun AccessGranted(navController: NavHostController) {
             ) {
                 Text(text = "Go back", fontSize = 20.sp)
             }
-            Spacer(modifier = Modifier.width(500.dp))
+            Spacer(modifier = Modifier.width(230.dp))
         }
         Spacer(modifier = Modifier.height(20.dp))
         Text(
@@ -259,7 +259,7 @@ fun AccessDenied(navController: NavHostController) {
             ) {
                 Text(text = "Go back", fontSize = 20.sp)
             }
-            Spacer(modifier = Modifier.width(500.dp))
+            Spacer(modifier = Modifier.width(230.dp))
         }
         Spacer(modifier = Modifier.height(300.dp))
         Text(
