@@ -1,6 +1,5 @@
 package com.example.loginjetpackcompose
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,11 +17,11 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -35,6 +34,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -60,7 +61,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@kotlin.OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun Login(navController: NavHostController) {
     val modifier = Modifier
@@ -75,14 +75,14 @@ fun Login(navController: NavHostController) {
                 .padding(5.dp)
                 .size(300.dp, 100.dp)
         )
-        Spacer(modifier = Modifier.height(25.dp))
+        Spacer(modifier = modifier.height(25.dp))
         Row (
-            modifier,
+            modifier = modifier,
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
             Column (
-                modifier.padding(10.dp),
+                modifier = modifier.padding(10.dp),
                 horizontalAlignment = Alignment.End,
                 verticalArrangement = Arrangement.Center
             ) {
@@ -91,7 +91,7 @@ fun Login(navController: NavHostController) {
                     modifier = modifier,
                     fontSize = 25.sp
                 )
-                Spacer(modifier = Modifier.height(30.dp))
+                Spacer(modifier = Modifier.height(45.dp))
                 Text(
                     text = "Password:",
                     modifier = modifier,
@@ -99,30 +99,26 @@ fun Login(navController: NavHostController) {
                 )
             }
             Column (
-                modifier.padding(10.dp),
+                modifier = modifier.padding(10.dp),
                 horizontalAlignment = Alignment.End,
                 verticalArrangement = Arrangement.Center
             ) {
                 TextField(
                     value = usernameTextField,
-                    onValueChange = {newUsernameTextField -> usernameTextField = newUsernameTextField},
-                    label = {Text(usernameTextField)},
-                    modifier = modifier
-                        .width(200.dp)
-                        .height(25.dp)
+                    onValueChange = {usernameTextField = it},
+                    modifier = modifier.width(220.dp).height(40.dp)
                 )
-                Spacer(modifier = Modifier.height(40.dp))
+                Spacer(modifier = modifier.height(40.dp))
                 TextField(
                     value = passwordTextField,
-                    onValueChange = {newPasswordTextField -> passwordTextField = newPasswordTextField},
-                    label = {Text(passwordTextField)},
-                    modifier = modifier
-                        .width(200.dp)
-                        .height(25.dp)
+                    onValueChange = {passwordTextField = it},
+                    visualTransformation = PasswordVisualTransformation(),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                    modifier = modifier.width(220.dp).height(40.dp)
                 )
             }
         }
-        Spacer(modifier = Modifier.height(30.dp))
+        Spacer(modifier = modifier.height(30.dp))
         Button(
             onClick = {
                 if(usernameTextField == "user" && passwordTextField == "login2024") {
@@ -144,14 +140,15 @@ fun Login(navController: NavHostController) {
 
 @Composable
 fun AccessGranted(navController: NavHostController) {
+    val modifier = Modifier
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Row(
-            modifier = Modifier,
+            modifier = modifier,
         ) {
             Button(
                 onClick = {
@@ -165,16 +162,15 @@ fun AccessGranted(navController: NavHostController) {
             ) {
                 Text(text = "Go back", fontSize = 20.sp)
             }
-            Spacer(modifier = Modifier.width(230.dp))
+            Spacer(modifier = modifier.width(230.dp))
         }
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = modifier.height(20.dp))
         Text(
             text = "Access granted!",
             color = Color.Black,
-            modifier = Modifier,
             fontSize = 40.sp
         )
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = modifier.height(20.dp))
         ItemList(
             listOf(
                 Contact("user1", "0363402302", "Male"),
@@ -207,7 +203,8 @@ fun ItemList(contactItem: List<Contact>) {
 //INSIDE CARD: Template
 @Composable
 fun ContactView(contact: Contact) {
-    Card(Modifier.fillMaxWidth()) {
+    val modifier = Modifier
+    Card(modifier = modifier.fillMaxWidth()) {
         Row {
             Column {
                 Image(
@@ -219,19 +216,19 @@ fun ContactView(contact: Contact) {
                         R.drawable.ic_launcher_foreground
                     }),
                     contentDescription = "Contact photo",
-                    Modifier.height(100.dp).padding(8.dp)
+                    modifier = modifier.height(100.dp).padding(8.dp)
                 )
             }
             Column {
                 Text(
                     text = contact.name,
                     fontSize = 24.sp,
-                    modifier = Modifier.padding(8.dp)
+                    modifier = modifier.padding(8.dp)
                 )
                 Text(
                     text = contact.phoneNumber,
                     fontSize = 24.sp,
-                    modifier = Modifier.padding(8.dp)
+                    modifier = modifier.padding(8.dp)
                 )
             }
         }
@@ -241,15 +238,14 @@ fun ContactView(contact: Contact) {
 
 @Composable
 fun AccessDenied(navController: NavHostController) {
+    val modifier = Modifier
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Row(
-            modifier = Modifier,
-        ) {
+        Row {
             Button(
                 onClick = {
                     navController.navigate("Login")
@@ -262,13 +258,13 @@ fun AccessDenied(navController: NavHostController) {
             ) {
                 Text(text = "Go back", fontSize = 20.sp)
             }
-            Spacer(modifier = Modifier.width(230.dp))
+            Spacer(modifier = modifier.width(230.dp))
         }
-        Spacer(modifier = Modifier.height(300.dp))
+        Spacer(modifier = modifier.height(300.dp))
         Text(
             text = "Access denied!",
             color = Color.Black,
-            modifier = Modifier,
+            modifier = modifier,
             fontSize = 40.sp
         )
     }
