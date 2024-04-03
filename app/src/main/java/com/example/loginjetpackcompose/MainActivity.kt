@@ -21,7 +21,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -91,7 +90,7 @@ fun Login(navController: NavHostController) {
                     modifier = modifier,
                     fontSize = 25.sp
                 )
-                Spacer(modifier = Modifier.height(45.dp))
+                Spacer(modifier = Modifier.height(70.dp))
                 Text(
                     text = "Password:",
                     modifier = modifier,
@@ -106,7 +105,7 @@ fun Login(navController: NavHostController) {
                 TextField(
                     value = usernameTextField,
                     onValueChange = {usernameTextField = it},
-                    modifier = modifier.width(220.dp).height(40.dp)
+                    singleLine = true
                 )
                 Spacer(modifier = modifier.height(40.dp))
                 TextField(
@@ -114,7 +113,7 @@ fun Login(navController: NavHostController) {
                     onValueChange = {passwordTextField = it},
                     visualTransformation = PasswordVisualTransformation(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                    modifier = modifier.width(220.dp).height(40.dp)
+                    singleLine = true
                 )
             }
         }
@@ -208,15 +207,22 @@ fun ContactView(contact: Contact) {
         Row {
             Column {
                 Image(
-                    painter = painterResource(id = if(contact.gender == "Male") {
-                        R.drawable.male
-                    } else if(contact.gender == "Female") {
-                        R.drawable.female
-                    } else {
-                        R.drawable.ic_launcher_foreground
-                    }),
+                    painter = painterResource(id = when (contact.gender) {
+                        "Male" -> {
+                            R.drawable.male
+                        }
+                        "Female" -> {
+                            R.drawable.female
+                        }
+                        else -> {
+                            R.drawable.ic_launcher_foreground
+                        }
+                    }
+                    ),
                     contentDescription = "Contact photo",
-                    modifier = modifier.height(100.dp).padding(8.dp)
+                    modifier = modifier
+                        .height(100.dp)
+                        .padding(8.dp)
                 )
             }
             Column {
