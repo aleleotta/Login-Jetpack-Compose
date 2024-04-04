@@ -147,7 +147,8 @@ fun AccessGranted(navController: NavHostController) {
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         Row(
-            modifier = modifier,
+            modifier = modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Start
         ) {
             Button(
                 onClick = {
@@ -161,7 +162,6 @@ fun AccessGranted(navController: NavHostController) {
             ) {
                 Text(text = "Go back", fontSize = 20.sp)
             }
-            Spacer(modifier = modifier.width(230.dp))
         }
         Spacer(modifier = modifier.height(20.dp))
         Text(
@@ -251,7 +251,10 @@ fun AccessDenied(navController: NavHostController) {
             .padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        Row {
+        Row (
+            modifier = modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Start
+        ) {
             Button(
                 onClick = {
                     navController.navigate("Login")
@@ -264,7 +267,6 @@ fun AccessDenied(navController: NavHostController) {
             ) {
                 Text(text = "Go back", fontSize = 20.sp)
             }
-            Spacer(modifier = modifier.width(230.dp))
         }
         Spacer(modifier = modifier.height(300.dp))
         Text(
