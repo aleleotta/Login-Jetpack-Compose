@@ -172,17 +172,17 @@ fun AccessGranted(navController: NavHostController) {
         Spacer(modifier = modifier.height(20.dp))
         ItemList(
             listOf(
-                Contact("user1", "0363402302", "Male"),
-                Contact("user2", "0363402302", "Female"),
-                Contact("user3", "0363402302", "Male"),
-                Contact("user4", "3480792302", "Female"),
-                Contact("user5", "0363402302", "Male"),
-                Contact("user6", "0363402302", "Female"),
-                Contact("user7", "0363402302", "Male"),
-                Contact("user8", "0363402302", "Male"),
-                Contact("user9", "0363402302", "Female"),
-                Contact("user10", "0363402302", "Female"),
-                Contact("user11", "0363402302", "Non-Binary")
+                Contact(1, "user1", "0363402302", "Male"),
+                Contact(2, "user2", "0363402302", "Female"),
+                Contact(3, "user3", "0363402302", "Male"),
+                Contact(4, "user4", "3480792302", "Female"),
+                Contact(5, "user5", "0363402302", "Male"),
+                Contact(6, "user6", "0363402302", "Female"),
+                Contact(7, "user7", "0363402302", "Male"),
+                Contact(8, "user8", "0363402302", "Male"),
+                Contact(9, "user9", "0363402302", "Female"),
+                Contact(10, "user10", "0363402302", "Female"),
+                Contact(11, "user11", "0363402302", "Non-Binary")
             )
         )
     }
