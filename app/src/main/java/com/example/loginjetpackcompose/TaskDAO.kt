@@ -1,6 +1,8 @@
 package com.example.loginjetpackcompose
 
 import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 
 @Dao
@@ -11,8 +13,6 @@ interface TaskDAO {
     @Query("SELECT * FROM contacts WHERE id = :id")
     fun getById(id: Long): Contact
 
-    @Query("INSERT INTO contacts (name, phoneNumber, gender) VALUES (:name, :phoneNumber, :gender)")
-    fun insert(name: String, phoneNumber: String, gender: String)
-
-
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun newTask(taskEntity: Contact)
 }
