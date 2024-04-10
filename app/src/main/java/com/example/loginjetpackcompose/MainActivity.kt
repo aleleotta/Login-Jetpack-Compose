@@ -16,8 +16,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -65,7 +67,7 @@ fun Login(navController: NavHostController) {
     val modifier = Modifier
     var usernameTextField by rememberSaveable { mutableStateOf("") }
     var passwordTextField by rememberSaveable { mutableStateOf("") }
-    Column (modifier.fillMaxSize(), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally){
+    Column (modifier.fillMaxSize().verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally){
         Image(
             painter = painterResource(id = R.drawable.captura_de_pantalla_2023_10_02_131011_removebg_preview),
             contentDescription = "IES Nervión",
