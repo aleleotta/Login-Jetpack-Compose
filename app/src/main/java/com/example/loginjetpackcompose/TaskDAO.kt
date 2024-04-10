@@ -1,6 +1,7 @@
 package com.example.loginjetpackcompose
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -15,11 +16,14 @@ interface TaskDAO {
     fun getById(id: Long): Contact
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun newTask(taskEntity: Contact)
-
-    @Query("DELETE FROM contacts WHERE id = :id")
-    fun deleteById(id: Long)
+    fun insertTask(taskEntity: Contact)
 
     @Update(onConflict = OnConflictStrategy.ABORT)
     fun updateTask(taskEntity: Contact)
+
+    @Delete
+    fun deleteTask(taskEntity: Contact)
+
+    @Query("DELETE FROM contacts WHERE id = :id")
+    fun deleteById(id: Long)
 }
